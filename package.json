@@ -1,0 +1,48 @@
+{
+    "name": "project",
+    "version": "1.0.0",
+    "description": "Projeto para encontrar padrão",
+    "license": "MIT",
+    "devDependencies": {
+        "@eslint/js": "^9.9.0",
+        "@types/jsonwebtoken": "^9.0.6",
+        "@types/node": "^22.2.0",
+        "@vitest/coverage-v8": "^2.0.5",
+        "dotenv-cli": "^7.4.2",
+        "eslint": "9.x",
+        "eslint-config-prettier": "^9.1.0",
+        "globals": "^15.9.0",
+        "prettier": "3.3.3",
+        "tsup": "^8.2.4",
+        "tsx": "^4.17.0",
+        "typescript": "^5.5.4",
+        "typescript-eslint": "^8.1.0",
+        "vitest": "^2.0.5"
+    },
+    "dependencies": {
+        "@fastify/cors": "^10.0.1",
+        "argon2": "^0.40.3",
+        "dayjs": "^1.11.12",
+        "fastify": "^4.28.1",
+        "fastify-plugin": "^4.5.1",
+        "jsonwebtoken": "^9.0.2",
+        "pg": "^8.13.1",
+        "reflect-metadata": "^0.2.2",
+        "typeorm": "^0.3.20",
+        "typeorm-extension": "^3.6.3",
+        "zod": "^3.23.8"
+    },
+    "scripts": {
+        "start": "dotenv -e env.production -- tsx dist",
+        "dev": "dotenv -e .env -- tsx watch src",
+        "test": "dotenv -e .env.test -- vitest --run",
+        "coverage": "dotenv -e .env.test --vitest --run --coverage",
+        "build": "tsup src dist",
+        "migrate:dev": "dotenv -e .env -- tsx ./src/database/create_db.ts",
+        "migrate:prod": "dotenv -e .env.production -- tsx ./src/database/create_db.ts",
+        "migrate:test": "dotenv -e .env.test -- tsx ./src/database/create_db.ts",
+        "drop:dev": "dotenv -e .env -- tsx ./src/database/drop_db.ts",
+        "drop:prod": "dotenv -e .env.production -- tsx ./src/database/drop_db.ts",
+        "drop:test": "dotenv -e .env.test -- tsx ./src/database/drop_db.ts"
+    }
+}
